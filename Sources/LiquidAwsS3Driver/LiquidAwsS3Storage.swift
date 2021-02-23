@@ -37,7 +37,9 @@ struct LiquidAwsS3Storage: FileStorage {
         if let customEndpoint = configuration.endpoint {
             return customEndpoint + "/" + bucket
         }
-        return "https://\(bucket).s3-\(region).amazonaws.com"
+        //MARK - replaced: return "https://\(bucket).s3-\(region).amazonaws.com"
+        //(note the '-' instead of the '.' after s3 in the prev version)
+        return "https://\(bucket).s3.\(region).amazonaws.com"
     }
 
     /// resolves a file location using a key and the public endpoint URL string
